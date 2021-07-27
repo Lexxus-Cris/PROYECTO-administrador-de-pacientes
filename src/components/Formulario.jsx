@@ -24,10 +24,26 @@ const Formulario = () => {
 
    const { petName, petOwner, phone, date, time, symptoms } = cita
 
+   // Funcion que envia los datos del usuario cuando haga click en agregar cita
+
+   const submitCita = e => {
+      e.preventDefault();
+
+      // Validar
+
+      // Asignar un ID
+
+      // Crear la cita
+
+      // Reinicar el form
+   }
+
    return (
       <Fragment>
          <h2>Crear cita</h2>
-         <form action="">
+         <form 
+            onSubmit={submitCita}
+         >
             <label htmlFor="">Nombre Mascota</label>
             <input
                type="text"
