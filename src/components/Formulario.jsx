@@ -1,6 +1,22 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
 const Formulario = () => {
+   // Crear state de citas
+   const [cita, setCita] = useState({
+      petName: '',
+      petOwner: '',
+      phone: '',
+      date: '',
+      time: '',
+      symptoms:''
+   })
+
+   // Funcion que se ejecuta cad que el usuario escribe en un input
+
+   const handleChange = (e) => {
+      console.log('Escribiendo...');
+   }
+
    return (
       <Fragment>
          <h2>Crear cita</h2>
@@ -8,18 +24,20 @@ const Formulario = () => {
             <label htmlFor="">Nombre Mascota</label>
             <input
                type="text"
-               name="mascota"
+               name="petName"
                alt="Nombre de la mascota"
                placeholder="Nombre de la mascota"
                className="u-full-width"
+               onChange={handleChange}
             />
             <label htmlFor="">Nombre Dueño</label>
             <input
                type="text"
-               name="propietario"
+               name="petOwner"
                alt="Nombre del dueño"
                placeholder="Nombre del dueño"
                className="u-full-width"
+               onChange={handleChange}
             />
             <label htmlFor="">Número de contacto</label>
             <input
@@ -28,6 +46,7 @@ const Formulario = () => {
                alt="Número de contacto"
                placeholder="Numero de contacto"
                className="u-full-width"
+               onChange={handleChange}
             />
             <label htmlFor="">Fecha</label>
             <input
@@ -35,6 +54,7 @@ const Formulario = () => {
                name="date"
                alt="fecha de la cita"
                className="u-full-width"
+               onChange={handleChange}
             />
             <label htmlFor="">Hora</label>
             <input
@@ -42,14 +62,16 @@ const Formulario = () => {
                name="time"
                alt="hora de la cita"
                className="u-full-width"
+               onChange={handleChange}
             />
             <label htmlFor="">Sintomas</label>
             <textarea 
-               name="sintomas"
+               name="symptoms"
                cols="30"
                rows="10"
                placeholder="Agregar sintomas del pacience: vomito, diarrea, etc."
                className="u-full-width"
+               onChange={handleChange}
             >
             </textarea>
             <button type="submit" className="u-full-width button-primary">Agregar cita</button>
