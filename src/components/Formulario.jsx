@@ -14,8 +14,15 @@ const Formulario = () => {
    // Funcion que se ejecuta cad que el usuario escribe en un input
 
    const handleChange = (e) => {
-      console.log('Escribiendo...');
+      setCita({
+         ...cita,
+         [e.target.name] : e.target.value
+      })
    }
+
+   // Extraer los valores para despues resetear el formulario mas adelante.
+
+   const { petName, petOwner, phone, date, time, symptoms } = cita
 
    return (
       <Fragment>
@@ -29,6 +36,7 @@ const Formulario = () => {
                placeholder="Nombre de la mascota"
                className="u-full-width"
                onChange={handleChange}
+               value={petName}
             />
             <label htmlFor="">Nombre Dueño</label>
             <input
@@ -38,6 +46,7 @@ const Formulario = () => {
                placeholder="Nombre del dueño"
                className="u-full-width"
                onChange={handleChange}
+               value={petOwner}
             />
             <label htmlFor="">Número de contacto</label>
             <input
@@ -47,6 +56,7 @@ const Formulario = () => {
                placeholder="Numero de contacto"
                className="u-full-width"
                onChange={handleChange}
+               value={phone}
             />
             <label htmlFor="">Fecha</label>
             <input
@@ -55,6 +65,7 @@ const Formulario = () => {
                alt="fecha de la cita"
                className="u-full-width"
                onChange={handleChange}
+               value={date}
             />
             <label htmlFor="">Hora</label>
             <input
@@ -63,6 +74,7 @@ const Formulario = () => {
                alt="hora de la cita"
                className="u-full-width"
                onChange={handleChange}
+               value={time}
             />
             <label htmlFor="">Sintomas</label>
             <textarea 
@@ -72,6 +84,7 @@ const Formulario = () => {
                placeholder="Agregar sintomas del pacience: vomito, diarrea, etc."
                className="u-full-width"
                onChange={handleChange}
+               value={symptoms}
             >
             </textarea>
             <button type="submit" className="u-full-width button-primary">Agregar cita</button>
