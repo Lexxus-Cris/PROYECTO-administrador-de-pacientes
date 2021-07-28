@@ -11,6 +11,9 @@ const Formulario = () => {
       symptoms:''
    })
 
+   const [ error, setError ] = useState(false);
+
+
    // Funcion que se ejecuta cad que el usuario escribe en un input
 
    const handleChange = (e) => {
@@ -30,6 +33,12 @@ const Formulario = () => {
       e.preventDefault();
 
       // Validar
+      const validate = Object.values(cita);
+      for (let i = 0; i < validate.length; i++) {
+         validate[i].trim() == ''
+            ? setError(true)
+            : setError(false)
+      }
 
       // Asignar un ID
 
@@ -41,6 +50,10 @@ const Formulario = () => {
    return (
       <Fragment>
          <h2>Crear cita</h2>
+         { error 
+            ?  <p className="alerta-error">Todos los campos son obligatorios</p>
+            : null
+         }
          <form 
             onSubmit={submitCita}
          >
@@ -53,6 +66,7 @@ const Formulario = () => {
                className="u-full-width"
                onChange={handleChange}
                value={petName}
+               required
             />
             <label htmlFor="">Nombre Dueño</label>
             <input
@@ -63,6 +77,7 @@ const Formulario = () => {
                className="u-full-width"
                onChange={handleChange}
                value={petOwner}
+               required
             />
             <label htmlFor="">Número de contacto</label>
             <input
@@ -73,6 +88,7 @@ const Formulario = () => {
                className="u-full-width"
                onChange={handleChange}
                value={phone}
+               required
             />
             <label htmlFor="">Fecha</label>
             <input
@@ -82,6 +98,7 @@ const Formulario = () => {
                className="u-full-width"
                onChange={handleChange}
                value={date}
+               required
             />
             <label htmlFor="">Hora</label>
             <input
@@ -91,6 +108,7 @@ const Formulario = () => {
                className="u-full-width"
                onChange={handleChange}
                value={time}
+               required
             />
             <label htmlFor="">Sintomas</label>
             <textarea 
@@ -101,6 +119,7 @@ const Formulario = () => {
                className="u-full-width"
                onChange={handleChange}
                value={symptoms}
+               required
             >
             </textarea>
             <button type="submit" className="u-full-width button-primary">Agregar cita</button>
