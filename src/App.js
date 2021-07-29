@@ -8,13 +8,20 @@ function App() {
   // Arreglo de citas
   const [saveCitas, setSaveCitas] = useState([]);
 
-  // Funcio que guarde las citas en el state
+  // Funcion que guarde las citas en el state
   const crearCita = cita => {
     setSaveCitas([
       ...saveCitas,
       cita
     ])
   }
+
+  // Funcion que elimina una cita por su id
+  const eliminarCita = id => {
+      const citas = saveCitas.filter(cita => cita.id !== id);
+      setSaveCitas(citas);
+  }
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -26,11 +33,15 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h2>Lista de citas</h2>
+            {saveCitas.length === 0 
+              ? <h2>Agrega una nueva cita</h2>
+              : <h2>Lista de citas</h2>
+            }
             {saveCitas.map(cita => (
               <DateItem
                 key={cita.id}
                 cita={cita}
+                eliminarCita={eliminarCita}
               />
             ))}
           </div>

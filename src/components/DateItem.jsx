@@ -1,8 +1,10 @@
 import React from 'react'
 
-const DateItem = ({cita}) => {
+const DateItem = ({ cita, eliminarCita }) => {
 
-   const { petName, petOwner, phone, date, time, symptoms } = cita
+   const { petName, petOwner, phone, date, time, symptoms, id } = cita;
+
+
    return(
       <div className='cita'>
 
@@ -12,7 +14,11 @@ const DateItem = ({cita}) => {
          <p>Fecha: <span>{ date }</span></p>
          <p>Hora: <span>{ time }</span></p>
          <p>Sintomas: <span>{ symptoms }</span></p>
-
+         <button
+            className="button eliminar u-full-width"
+            type="button"
+            onClick={() => eliminarCita(id)}
+            >Eliminar &times;</button>
       </div>
    )
 }
