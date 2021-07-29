@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Formulario = () => {
    // Crear state de citas
@@ -35,13 +36,14 @@ const Formulario = () => {
       // Validar
       const validate = Object.values(cita);
       for (let i = 0; i < validate.length; i++) {
-         validate[i].trim() == ''
+         validate[i].trim() === ''
             ? setError(true)
             : setError(false)
       }
 
       // Asignar un ID
-
+      cita.id = uuidv4();
+      console.log(cita);
       // Crear la cita
 
       // Reinicar el form
