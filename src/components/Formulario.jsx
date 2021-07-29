@@ -43,9 +43,19 @@ const Formulario = ({crearCita}) => {
 
       // Asignar un ID
       cita.id = uuidv4();
+
       // Crear la cita
       crearCita(cita)
-      // Reinicar el form
+
+      // Reiniciar el form
+      setCita({
+         petName: '',
+         petOwner: '',
+         phone: '',
+         date: '',
+         time: '',
+         symptoms: ''
+      })
    }
 
    return (
