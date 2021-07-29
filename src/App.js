@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 
 import Formulario from './components/Formulario.jsx';
+import DateItem from './components/DateItem.jsx';
 
 function App() {
 
@@ -25,7 +26,13 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            2
+            <h2>Lista de citas</h2>
+            {saveCitas.map(cita => (
+              <DateItem
+                key={cita.id}
+                cita={cita}
+              />
+            ))}
           </div>
         </div>
       </div>
