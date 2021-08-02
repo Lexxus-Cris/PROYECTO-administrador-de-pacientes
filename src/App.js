@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react';
+import PropTypes from 'prop-types'
 
 import Formulario from './components/Formulario.jsx';
 import DateItem from './components/DateItem.jsx';
@@ -20,8 +21,10 @@ function App() {
   useEffect(() => {
     if(citasIniciales) {
       localStorage.setItem('citas', JSON.stringify(saveCitas))
-    } 
-  }, [saveCitas]) 
+    } else {
+      localStorage.setItem('citas', JSON.stringify([]))
+    }
+  }, [saveCitas, citasIniciales]) 
 
   // Funcion que guarde las citas en el state
   const crearCita = cita => {
@@ -64,6 +67,11 @@ function App() {
       </div>
     </Fragment>
   );
+}
+
+// Documentacion de los componentes
+Formulario.propTypes = {
+  crearCita: PropTypes.func.isRequired
 }
 
 export default App;

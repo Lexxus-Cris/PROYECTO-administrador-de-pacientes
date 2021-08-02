@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const DateItem = ({ cita, eliminarCita }) => {
 
@@ -21,6 +22,11 @@ const DateItem = ({ cita, eliminarCita }) => {
             >Eliminar &times;</button>
       </div>
    )
+}
+
+DateItem.propTypes = {
+   cita : PropTypes.object.isRequired,
+   eliminarCita: PropTypes.func.isRequired
 }
 
 export default DateItem
