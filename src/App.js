@@ -1,12 +1,27 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 
 import Formulario from './components/Formulario.jsx';
 import DateItem from './components/DateItem.jsx';
 
 function App() {
 
+  // Citas en local storage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'))
+  if (!citasIniciales) {
+    citasIniciales = [];
+  }
+
   // Arreglo de citas
-  const [saveCitas, setSaveCitas] = useState([]);
+  const [saveCitas, setSaveCitas] = useState(citasIniciales ? citasIniciales : []);
+
+  // useEffect para realizar ciertas operaciones cuando el state cambia
+
+  // Con esta funcion haremos que cada vez que haya nuevas citas o el state de citas cambie, estas se almacenen en el local storage
+  useEffect(() => {
+    if(citasIniciales) {
+      localStorage.setItem('citas', JSON.stringify(saveCitas))
+    } 
+  }, [saveCitas]) 
 
   // Funcion que guarde las citas en el state
   const crearCita = cita => {
